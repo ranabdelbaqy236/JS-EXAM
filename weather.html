@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wanderlust Weather</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/views.css" />
+  <link rel="stylesheet" href="../css/widgets.css" />
+  <link rel="stylesheet" href="../css/weather.css" />
+  <link rel="stylesheet" href="../css/utilities.css" />
+</head>
+
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon"><i class="fa-solid fa-paper-plane"></i></div>
+        <div class="logo-text">Wanderlust</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <a href="../html/index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Explore</span>
+          <a href="../html/hoildays.html" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>Holidays</span></a>
+          <a href="../html/events.html" class="nav-item"><i class="fa-solid fa-ticket"></i><span>Events</span></a>
+          <a href="../html/weather.html" class="nav-item active"><i class="fa-solid fa-cloud-sun"></i><span>Weather</span></a>
+          <a href="../html/long weekend.html" class="nav-item"><i class="fa-solid fa-umbrella-beach"></i><span>Long Weekends</span></a>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Travel Tools</span>
+          <a href="../html/currency.html" class="nav-item"><i class="fa-solid fa-money-bill-transfer"></i><span>Currency</span></a>
+          <a href="../html/sun times.html" class="nav-item"><i class="fa-solid fa-sun"></i><span>Sun Times</span></a>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Personal</span>
+          <a href="../html/my plans.html" class="nav-item">
+          <i class="fa-solid fa-heart"></i>
+          <span>My Plans</span>
+          <span class="nav-count-badge" id="sidebarPlansCount">0</span>
+        </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="user-info">
+            <span class="user-name">Traveler</span>
+            <span class="user-status">Planning mode</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+
+        <div class="header-title">
+          <h1>Weather</h1>
+          <p>Check forecasts for any destination</p>
+        </div>
+
+        <div class="header-actions">
+          <div class="header-datetime">
+            <i class="fa-regular fa-clock"></i>
+            <span id="currentDateTime"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="main-content">
+        <div class="view active">
+          <div class="view-header-card gradient-blue">
+            <div class="view-header-icon">
+              <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+
+            <div class="view-header-content">
+              <h2>Weather Forecast</h2>
+              <p>Check 7-day weather forecasts for cities around the world</p>
+            </div>
+
+            <div class="view-header-selection" id="weatherSelection">
+              <div class="current-selection-badge">
+                <img class="selection-flag" id="weatherFlag" src="" alt="" />
+                <span id="weatherCountryName">Select Country</span>
+                <span class="selection-city" id="weatherCityName"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="weather-layout" id="weatherContent"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/weather.js"></script>
+  <script src="../js/plans-count.js"></script>
+</body>
+</html>

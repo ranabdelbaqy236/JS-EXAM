@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wanderlust My Plans</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/views.css" />
+  <link rel="stylesheet" href="../css/widgets.css" />
+  <link rel="stylesheet" href="../css/utilities.css" />
+  <link rel="stylesheet" href="../css/my plans.css" />
+</head>
+
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon"><i class="fa-solid fa-paper-plane"></i></div>
+        <div class="logo-text">Wanderlust</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <span class="nav-section-title">Main</span>
+          <a href="../html/index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Explore</span>
+          <a href="../html/hoildays.html" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>Holidays</span></a>
+          <a href="../html/events.html" class="nav-item"><i class="fa-solid fa-ticket"></i><span>Events</span></a>
+          <a href="../html/weather.html" class="nav-item"><i class="fa-solid fa-cloud-sun"></i><span>Weather</span></a>
+          <a href="../html/long weekend.html" class="nav-item"><i class="fa-solid fa-umbrella-beach"></i><span>Long Weekends</span></a>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Travel Tools</span>
+          <a href="../html/currency.html" class="nav-item"><i class="fa-solid fa-money-bill-transfer"></i><span>Currency</span></a>
+          <a href="../html/sun times.html" class="nav-item"><i class="fa-solid fa-sun"></i><span>Sun Times</span></a>
+        </div>
+
+        <div class="nav-section">
+          <span class="nav-section-title">Personal</span>
+          <a href="../html/my plans.html" class="nav-item active">
+            <i class="fa-solid fa-heart"></i>
+            <span>My Plans</span>
+            <span class="nav-count-badge" id="sidebarPlansCount">0</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="user-info">
+            <span class="user-name">Traveler</span>
+            <span class="user-status">Planning mode</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-wrapper">
+      <header class="top-header">
+        <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+
+        <div class="header-title">
+          <h1>My Plans</h1>
+          <p>Your saved holidays and events</p>
+        </div>
+
+        <div class="header-actions">
+          <div class="header-datetime">
+            <i class="fa-regular fa-clock"></i>
+            <span id="currentDateTime"></span>
+          </div>
+        </div>
+      </header>
+
+      <section class="main-content">
+        <div class="view active">
+          <div class="view-header-card gradient-plans">
+            <div class="view-header-icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <div class="view-header-content">
+              <h2>My Saved Plans</h2>
+              <p>Your saved holidays, events, and trip ideas all in one place</p>
+            </div>
+
+           <button class="clear-all-btn" id="clearAllBtn" type="button" onclick="handleClearAllClick()">
+            <i class="fa-solid fa-trash"></i>
+            Clear All
+           </button>
+          </div>
+
+          <div class="plans-tabs">
+            <button class="plan-tab active" type="button">
+              <i class="fa-solid fa-layer-group"></i>
+              All
+              <span id="allCount">0</span>
+            </button>
+
+            <button class="plan-tab" type="button">
+              <i class="fa-solid fa-calendar-check"></i>
+              Holidays
+              <span id="holidaysCount">0</span>
+            </button>
+
+            <button class="plan-tab" type="button">
+              <i class="fa-solid fa-ticket"></i>
+              Events
+              <span id="eventsCount">0</span>
+            </button>
+
+            <button class="plan-tab" type="button">
+              <i class="fa-solid fa-umbrella-beach"></i>
+              Long Weekends
+              <span id="weekendsCount">0</span>
+            </button>
+          </div>
+
+          <div class="plans-list" id="plansList"></div>
+
+        <div class="plans-empty" id="plansEmpty">
+        <div class="empty-icon">
+            <i class="fa-solid fa-heart-crack"></i>
+        </div>
+
+        <h2>No Saved Plans Yet</h2>
+        <p>Start exploring and save holidays, events, or long<br />weekends you like!</p>
+
+        <a href="../html/main.html" class="start-exploring-btn">
+            <i class="fa-solid fa-compass"></i>
+            Start Exploring
+        </a>
+        </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="clear-modal-overlay" id="clearModalOverlay">
+  <div class="clear-modal">
+    <div class="clear-modal-icon">!</div>
+
+    <h2>Clear All Plans?</h2>
+
+    <p>
+      This will permanently delete all your saved plans.<br />
+      This action cannot be undone!
+    </p>
+
+    <div class="clear-modal-actions">
+      <button class="confirm-clear-btn" type="button" onclick="clearAllPlans()">
+        Yes, clear all!
+      </button>
+
+      <button class="cancel-clear-btn" type="button" onclick="hideClearModal()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="cleared-success-overlay" id="clearedSuccessOverlay">
+  <div class="cleared-success-modal">
+    <div class="cleared-success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+
+    <h2>Cleared!</h2>
+    <p>All your plans have been removed.</p>
+  </div>
+</div>
+
+
+<div class="no-plans-modal-overlay" id="noPlansModalOverlay">
+  <div class="no-plans-modal">
+    <div class="no-plans-modal-icon">i</div>
+
+    <h2>No Plans</h2>
+
+    <p>There are no saved plans to clear.</p>
+
+    <button class="no-plans-ok-btn" type="button" onclick="hideNoPlansModal()">
+      OK
+    </button>
+  </div>
+</div>
+
+<div class="remove-modal-overlay" id="removeModalOverlay">
+  <div class="remove-modal">
+    <div class="remove-modal-icon">!</div>
+
+    <h2>Remove Plan?</h2>
+    <p>Are you sure you want to remove this plan?</p>
+
+    <div class="remove-modal-actions">
+      <button class="confirm-remove-btn" type="button" onclick="confirmRemovePlan()">
+        Yes, remove it!
+      </button>
+
+      <button class="cancel-remove-btn" type="button" onclick="hideRemoveModal()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="removed-success-overlay" id="removedSuccessOverlay">
+  <div class="removed-success-modal">
+    <div class="removed-success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+
+    <h2>Removed!</h2>
+    <p>The plan has been removed.</p>
+  </div>
+</div>
+
+
+  <script src="../js/my plans.js"></script>
+  <script src="../js/plans-count.js"></script>
+</body>
+</html>

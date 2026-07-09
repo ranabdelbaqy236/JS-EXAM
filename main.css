@@ -1,0 +1,14 @@
+.country-info-section {
+  min-height: 380px;
+}
+
+.dashboard-country-info {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.country-info-placeholder {
+  min-height: 260px;
+}
